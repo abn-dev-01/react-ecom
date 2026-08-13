@@ -10,6 +10,12 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* Design tokens: one place that defines the storefront's brand accent.
+     Because these live under @theme, Tailwind auto-generates bg-brand,
+     text-brand, border-brand, etc. — no separate config file needed. */
+  --color-brand: #4f46e5;
+  --color-brand-foreground: #ffffff;
 }
 
 @media (prefers-color-scheme: dark) {

@@ -11,6 +11,7 @@ export const mockProducts: Product[] = [
     description: "A durable, minimal tote for daily use.",
     priceInCents: 3200,
     imageUrl: "https://picsum.photos/seed/p1/400/400",
+    variants: ["Small", "Large"],
   },
   {
     id: "p2",
@@ -18,6 +19,7 @@ export const mockProducts: Product[] = [
     description: "Hand-glazed ceramic dripper and carafe.",
     priceInCents: 4800,
     imageUrl: "https://picsum.photos/seed/p2/400/400",
+    variants: ["1-Cup", "3-Cup"],
   },
   {
     id: "p3",
@@ -25,6 +27,7 @@ export const mockProducts: Product[] = [
     description: "Lightweight, warm, and machine washable.",
     priceInCents: 2400,
     imageUrl: "https://picsum.photos/seed/p3/400/400",
+    variants: ["S/M", "L/XL"],
   },
   {
     id: "p4",
@@ -32,5 +35,6 @@ export const mockProducts: Product[] = [
     description: "Keeps drinks cold for 24 hours.",
     priceInCents: 2900,
     imageUrl: "https://picsum.photos/seed/p4/400/400",
+    variants: ["18oz", "32oz"],
   },
 ];

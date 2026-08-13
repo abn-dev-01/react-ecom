@@ -85,6 +85,14 @@ Check at a few widths (browser dev tools' responsive mode, or just resize the wi
 - **Product grid:** 1 column on narrow phones, 2 columns around tablet width, 3 columns at `lg`, 4 columns at `xl` (a wide desktop window).
 - Footer with the current year sits at the bottom of the viewport even on short pages (this is the `flex flex-1 flex-col` wrapper in `layout.tsx` doing its job — content grows to fill available space, pushing the footer down instead of leaving a gap above it).
 
+## Fix: white-on-white in dark mode
+
+The `create-next-app` scaffold ships a `@media (prefers-color-scheme: dark)` block in `globals.css` that flips the page background to near-black on a device/browser set to dark mode. None of the components built so far (`Card`, `Header`, `Footer`, `Button`) have dark-mode-aware classes — they're hardcoded to a light palette (`bg-white`, `text-zinc-900`, etc.). The result was a broken hybrid: page background black, card backgrounds still white, and the native `<select>` dropdown inheriting the browser's dark chrome — producing white text on a white options list.
+
+First attempt overcorrected: forcing `color-scheme: light` on `:root` fixed the dropdown but also flattened the page background to always-white, losing the dark-mode look entirely — a bigger change than the bug called for.
+
+Scoped fix in `globals.css`: kept the `@media (prefers-color-scheme: dark)` block (page background still follows the OS/browser preference, cards still keep their contrast against it), and added `color-scheme: light` to just `input, select, textarea`. That fixes the native dropdown *popup panel* chrome, but wasn't the whole story — see the follow-up fix in `doc/04-forms-and-validation.md` for the actual remaining cause (the form fields' own text color).
+
 ## What's next — Module 4 preview
 
 The Cart page is currently a static placeholder. Module 4 (Forms & Validation) builds the checkout address form and a variant selector, both of which will lean on `Button` and the responsive layout patterns established here.

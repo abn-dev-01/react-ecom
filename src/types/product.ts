@@ -8,4 +8,6 @@ export interface Product {
   /** Price in cents (integer) — avoids floating-point rounding bugs with money. */
   priceInCents: number;
   imageUrl: string;
+  /** Selectable options, e.g. sizes. Always at least one value. */
+  variants: string[];
 }

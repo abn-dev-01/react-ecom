@@ -30,3 +30,13 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Scoped fix: only form controls force light chrome, so the <select>
+   dropdown never renders white-on-white again. The page background is
+   still free to follow the OS/browser dark-mode preference above —
+   component-level dark styling (Card, Header, Button) is a future module. */
+input,
+select,
+textarea {
+  color-scheme: light;
+}

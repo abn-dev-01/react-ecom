@@ -5,6 +5,7 @@ import { Product } from "@/types/product";
 import { formatPrice } from "@/lib/format";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
+import { AddToCartForm } from "@/components/product/AddToCartForm";
 
 interface ProductCardProps {
   product: Product;
@@ -42,6 +43,10 @@ export function ProductCard({ product }: ProductCardProps) {
         <p className="mt-2 font-medium text-zinc-900">
           {formatPrice(product.priceInCents)}
         </p>
+
+        <div className="mt-3 border-t border-zinc-100 pt-3">
+          <AddToCartForm product={product} />
+        </div>
       </Card.Body>
     </Card>
   );

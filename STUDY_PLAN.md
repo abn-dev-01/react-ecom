@@ -46,8 +46,8 @@ Each module has a concrete deliverable built inside the storefront.
 
 ## Status
 
-- [ ] Module 1 — React Fundamentals & Mental Model
-- [ ] Module 2 — Reusable Components
+- [x] Module 1 — React Fundamentals & Mental Model
+- [x] Module 2 — Reusable Components
 - [ ] Module 3 — Responsive UI (CSS + Tailwind)
 - [ ] Module 4 — Forms & Validation
 - [ ] Module 5 — Async & API Communication

@@ -8,6 +8,7 @@ import {
   countries,
   ShippingAddressInput,
 } from "@/lib/validation/shipping-address";
+import { postJson, ApiError } from "@/lib/api-client";
 import { Button } from "@/components/ui/Button";
 
 const fieldClasses =
@@ -21,6 +22,7 @@ export function ShippingAddressForm() {
   const {
     register,
     handleSubmit,
+    setError,
     formState: { errors, isSubmitting },
   } = useForm<ShippingAddressInput>({
     resolver: zodResolver(shippingAddressSchema),
@@ -34,12 +36,21 @@ export function ShippingAddressForm() {
     },
   });
 
-  const onSubmit = (data: ShippingAddressInput) => {
-    // Module 5 (Async & API Communication) replaces this with a real
-    // request. For now, this proves the form is fully validated before
-    // anything is "sent".
-    console.log("Shipping address submitted:", data);
-    setIsSubmitted(true);
+  const onSubmit = async (data: ShippingAddressInput) => {
+    try {
+      await postJson<{ success: true }>("/api/shipping-address", data);
+      setIsSubmitted(true);
+    } catch (err) {
+      // Field-level errors already ran client-side via zodResolver; this
+      // is a network failure or a rejection from the server's own
+      // (identical) schema check — shown once, not tied to a field.
+      setError("root", {
+        message:
+          err instanceof ApiError
+            ? err.message
+            : "Couldn't save shipping details. Try again.",
+      });
+    }
   };
 
   if (isSubmitted) {
@@ -183,6 +194,12 @@ export function ShippingAddressForm() {
       <Button type="submit" disabled={isSubmitting}>
         {isSubmitting ? "Saving…" : "Save shipping details"}
       </Button>
+
+      {errors.root && (
+        <p role="alert" className={errorClasses}>
+          {errors.root.message}
+        </p>
+      )}
     </form>
   );
 }

@@ -10,4 +10,6 @@ export interface Product {
   imageUrl: string;
   /** Selectable options, e.g. sizes. Always at least one value. */
   variants: string[];
+  /** Units currently available. The server, not the client, enforces this. */
+  stock: number;
 }

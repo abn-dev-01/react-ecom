@@ -50,7 +50,7 @@ Each module has a concrete deliverable built inside the storefront.
 - [x] Module 2 — Reusable Components
 - [x] Module 3 — Responsive UI (CSS + Tailwind)
 - [x] Module 4 — Forms & Validation
-- [ ] Module 5 — Async & API Communication
+- [x] Module 5 — Async & API Communication
 - [ ] Module 6 — Next.js App Router & Data Fetching
 - [ ] Module 7 — Auth & Protected Routes
 - [ ] Module 8 — Testing (Vitest + RTL)

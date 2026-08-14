@@ -43,6 +43,7 @@ export function ProductCard({ product }: ProductCardProps) {
         <p className="mt-2 font-medium text-zinc-900">
           {formatPrice(product.priceInCents)}
         </p>
+        <p className="text-xs text-zinc-500">{product.stock} in stock</p>
 
         <div className="mt-3 border-t border-zinc-100 pt-3">
           <AddToCartForm product={product} />

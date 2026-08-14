@@ -1,4 +1,4 @@
-import { ProductList } from "@/components/product/ProductList";
+import { ProductCatalog } from "@/components/product/ProductCatalog";
 import { mockProducts } from "@/lib/mock-products";
 import { Container } from "@/components/layout/Container";
 
@@ -9,7 +9,7 @@ export default function Home() {
         <h1 className="mb-8 text-2xl font-semibold text-zinc-900">
           All Products
         </h1>
-        <ProductList products={mockProducts} />
+        <ProductCatalog initialProducts={mockProducts} />
       </Container>
     </main>
   );
